@@ -1,0 +1,78 @@
+{
+  "selected_model": "Histogram Gradient Boosting",
+  "feature_count": 26,
+  "dataset_rows": 11429,
+  "test_set_size": 1715,
+  "test_accuracy": 0.8705539358600584,
+  "phishing_precision": 0.8587570621468926,
+  "phishing_recall": 0.8868144690781797,
+  "phishing_f1": 0.8725602755453502,
+  "confusion_matrix": [
+    [
+      733,
+      125
+    ],
+    [
+      97,
+      760
+    ]
+  ],
+  "feature_names": [
+    "url_length",
+    "hostname_length",
+    "path_length",
+    "query_length",
+    "dot_count",
+    "hyphen_count",
+    "at_count",
+    "question_mark_count",
+    "ampersand_count",
+    "equals_count",
+    "underscore_count",
+    "percent_count",
+    "slash_count",
+    "colon_count",
+    "digit_count",
+    "digit_ratio",
+    "uses_https",
+    "host_is_ip",
+    "has_port",
+    "approximate_subdomain_count",
+    "has_punycode",
+    "suspicious_keyword_count",
+    "uses_shortener",
+    "http_token_in_path",
+    "has_query",
+    "has_fragment"
+  ],
+  "validation_comparison": [
+    {
+      "model": "Histogram Gradient Boosting",
+      "validation_accuracy": 0.8617269544924154,
+      "phishing_precision": 0.8490990990990991,
+      "phishing_recall": 0.8798133022170361,
+      "phishing_f1": 0.8641833810888252
+    },
+    {
+      "model": "Extra Trees",
+      "validation_accuracy": 0.8640606767794633,
+      "phishing_precision": 0.8732057416267942,
+      "phishing_recall": 0.851808634772462,
+      "phishing_f1": 0.8623744831659775
+    },
+    {
+      "model": "Random Forest",
+      "validation_accuracy": 0.8599766627771295,
+      "phishing_precision": 0.8591385331781141,
+      "phishing_recall": 0.8611435239206534,
+      "phishing_f1": 0.8601398601398601
+    },
+    {
+      "model": "Logistic Regression",
+      "validation_accuracy": 0.8004667444574096,
+      "phishing_precision": 0.826362484157161,
+      "phishing_recall": 0.7607934655775963,
+      "phishing_f1": 0.7922235722964763
+    }
+  ]
+}

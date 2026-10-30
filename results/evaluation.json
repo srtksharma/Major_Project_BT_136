@@ -1,0 +1,164 @@
+{
+  "dataset_rows": 11429,
+  "feature_count": 81,
+  "selected_model": "Histogram Gradient Boosting",
+  "selection_metric": "validation_f1_phishing",
+  "validation_comparison": [
+    {
+      "model": "Histogram Gradient Boosting",
+      "validation_accuracy": 0.9638273045507585,
+      "validation_precision_phishing": 0.9574223245109321,
+      "validation_recall_phishing": 0.970828471411902,
+      "validation_f1_phishing": 0.9640787949015064
+    },
+    {
+      "model": "Extra Trees",
+      "validation_accuracy": 0.9591598599766628,
+      "validation_precision_phishing": 0.9570267131242741,
+      "validation_recall_phishing": 0.9614935822637106,
+      "validation_f1_phishing": 0.959254947613504
+    },
+    {
+      "model": "Random Forest",
+      "validation_accuracy": 0.955075845974329,
+      "validation_precision_phishing": 0.9513888888888888,
+      "validation_recall_phishing": 0.9591598599766628,
+      "validation_f1_phishing": 0.9552585705984893
+    },
+    {
+      "model": "Logistic Regression",
+      "validation_accuracy": 0.9393232205367561,
+      "validation_precision_phishing": 0.9372822299651568,
+      "validation_recall_phishing": 0.941656942823804,
+      "validation_f1_phishing": 0.9394644935972061
+    }
+  ],
+  "test_metrics": {
+    "accuracy": 0.9743440233236151,
+    "precision_phishing": 0.9765533411488863,
+    "recall_phishing": 0.9719953325554259,
+    "f1_phishing": 0.9742690058479532
+  },
+  "classification_report": {
+    "legitimate": {
+      "precision": 0.9721577726218097,
+      "recall": 0.9766899766899767,
+      "f1-score": 0.9744186046511628,
+      "support": 858.0
+    },
+    "phishing": {
+      "precision": 0.9765533411488863,
+      "recall": 0.9719953325554259,
+      "f1-score": 0.9742690058479532,
+      "support": 857.0
+    },
+    "accuracy": 0.9743440233236151,
+    "macro avg": {
+      "precision": 0.9743555568853479,
+      "recall": 0.9743426546227013,
+      "f1-score": 0.974343805249558,
+      "support": 1715.0
+    },
+    "weighted avg": {
+      "precision": 0.9743542753784887,
+      "recall": 0.9743440233236151,
+      "f1-score": 0.9743438488643694,
+      "support": 1715.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      838,
+      20
+    ],
+    [
+      24,
+      833
+    ]
+  ],
+  "test_set_size": 1715,
+  "random_state": 42,
+  "feature_names": [
+    "length_url",
+    "length_hostname",
+    "ip",
+    "nb_dots",
+    "nb_hyphens",
+    "nb_at",
+    "nb_qm",
+    "nb_and",
+    "nb_eq",
+    "nb_underscore",
+    "nb_tilde",
+    "nb_percent",
+    "nb_slash",
+    "nb_star",
+    "nb_colon",
+    "nb_comma",
+    "nb_semicolumn",
+    "nb_dollar",
+    "nb_space",
+    "nb_www",
+    "nb_com",
+    "nb_dslash",
+    "http_in_path",
+    "https_token",
+    "ratio_digits_url",
+    "ratio_digits_host",
+    "punycode",
+    "port",
+    "tld_in_path",
+    "tld_in_subdomain",
+    "abnormal_subdomain",
+    "nb_subdomains",
+    "prefix_suffix",
+    "random_domain",
+    "shortening_service",
+    "path_extension",
+    "nb_redirection",
+    "nb_external_redirection",
+    "length_words_raw",
+    "char_repeat",
+    "shortest_words_raw",
+    "shortest_word_host",
+    "shortest_word_path",
+    "longest_words_raw",
+    "longest_word_host",
+    "longest_word_path",
+    "avg_words_raw",
+    "avg_word_host",
+    "avg_word_path",
+    "phish_hints",
+    "domain_in_brand",
+    "brand_in_subdomain",
+    "brand_in_path",
+    "suspecious_tld",
+    "statistical_report",
+    "nb_hyperlinks",
+    "ratio_intHyperlinks",
+    "ratio_extHyperlinks",
+    "nb_extCSS",
+    "ratio_extRedirection",
+    "ratio_extErrors",
+    "login_form",
+    "external_favicon",
+    "links_in_tags",
+    "ratio_intMedia",
+    "ratio_extMedia",
+    "iframe",
+    "popup_window",
+    "safe_anchor",
+    "onmouseover",
+    "right_clic",
+    "empty_title",
+    "domain_in_title",
+    "domain_with_copyright",
+    "whois_registered_domain",
+    "domain_registration_length",
+    "domain_age",
+    "web_traffic",
+    "dns_record",
+    "google_index",
+    "page_rank"
+  ]
+}
