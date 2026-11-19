@@ -1,0 +1,240 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Dark variant driven by the `.dark` class set by next-themes */
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — LinkLens (visual redesign)                        */
+/*  A clean monochrome system, light-first: light-grey page, white    */
+/*  cards with a hairline border and a very soft shadow, near-black   */
+/*  text and primary actions. The ONLY strong colors are the three    */
+/*  verdict tokens (green / amber / red), always paired with an icon  */
+/*  and a text label. Dark mode inverts the neutrals. No glows, no    */
+/*  gradients, no glass blur. Contrast measured to WCAG AA (4.5:1).   */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --radius: 0.75rem;
+
+  /* Base surfaces (light mode is the primary theme) */
+  --background: oklch(0.965 0.002 247);
+  --foreground: oklch(0.17 0.004 256);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.17 0.004 256);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.17 0.004 256);
+
+  /* Monochrome actions: near-black primary, light-grey surfaces */
+  --primary: oklch(0.18 0.004 256);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.93 0.002 247);
+  --secondary-foreground: oklch(0.22 0.004 256);
+  --accent: oklch(0.94 0.002 247);
+  --accent-foreground: oklch(0.17 0.004 256);
+
+  --muted: oklch(0.935 0.002 247);
+  --muted-foreground: oklch(0.44 0.008 256);
+
+  --destructive: oklch(0.53 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.895 0.003 247);
+  /* Field borders are darker than card hairlines on purpose: they
+     identify interactive components, so they meet the 3:1 non-text
+     contrast rule against the card (measured 3.9:1). */
+  --input: oklch(0.6 0.004 247);
+  /* The single accent: a deep ink blue, used ONLY for links, focus
+     rings and the active nav state. Verdict colors stay separate. */
+  --brand: oklch(0.43 0.125 258);
+  --ring: oklch(0.43 0.125 258);
+
+  /* Semantic verdict tokens — always paired with icon + label in UI,
+     never communicated by color alone */
+  --safe: oklch(0.5 0.13 160);
+  --safe-foreground: oklch(0.99 0 0);
+  /* Amber has two values: the darker one is for text and badge
+     borders on the tinted background (4.5:1+); the brighter one is
+     only for fills, dots and icons (3:1+ against the card). */
+  --suspicious: oklch(0.52 0.17 84);
+  --suspicious-fill: oklch(0.65 0.17 84);
+  --suspicious-foreground: oklch(0.26 0.06 84);
+  --phishing: oklch(0.53 0.2 25);
+  --phishing-foreground: oklch(0.99 0 0);
+
+  /* Charts (Recharts): neutrals + verdict colors only */
+  --chart-1: oklch(0.35 0.005 256);
+  --chart-2: oklch(0.5 0.13 160);
+  --chart-3: oklch(0.65 0.17 84);
+  --chart-4: oklch(0.53 0.2 25);
+  --chart-5: oklch(0.65 0.005 256);
+
+  /* No glows in this system (tokens kept at zero so any legacy
+     shadow-glow-* class renders nothing); one very soft card shadow */
+  --glow-primary: 0 0 0 rgb(0 0 0 / 0);
+  --glow-safe: 0 0 0 rgb(0 0 0 / 0);
+  --glow-phishing: 0 0 0 rgb(0 0 0 / 0);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04),
+    0 1px 3px oklch(0 0 0 / 0.03);
+}
+
+.dark {
+  /* Inverted neutrals: near-black page, dark-grey cards, white
+     primary actions (the monochrome system, flipped) */
+  --background: oklch(0.155 0.003 256);
+  --foreground: oklch(0.95 0.002 247);
+  --card: oklch(0.2 0.003 256);
+  --card-foreground: oklch(0.95 0.002 247);
+  --popover: oklch(0.2 0.003 256);
+  --popover-foreground: oklch(0.95 0.002 247);
+
+  --primary: oklch(0.95 0.002 247);
+  --primary-foreground: oklch(0.16 0.003 256);
+  --secondary: oklch(0.25 0.003 256);
+  --secondary-foreground: oklch(0.95 0.002 247);
+  --accent: oklch(0.27 0.003 256);
+  --accent-foreground: oklch(0.95 0.002 247);
+
+  --muted: oklch(0.24 0.003 256);
+  --muted-foreground: oklch(0.71 0.006 256);
+
+  --destructive: oklch(0.68 0.2 22);
+  --destructive-foreground: oklch(0.97 0.01 22);
+
+  --border: oklch(0.29 0.004 256);
+  --input: oklch(0.53 0.004 256);
+  --brand: oklch(0.76 0.11 258);
+  --ring: oklch(0.76 0.11 258);
+
+  --safe: oklch(0.77 0.15 163);
+  --safe-foreground: oklch(0.16 0.04 163);
+  --suspicious: oklch(0.83 0.16 85);
+  --suspicious-fill: oklch(0.88 0.14 86);
+  --suspicious-foreground: oklch(0.22 0.05 85);
+  --phishing: oklch(0.74 0.19 22);
+  --phishing-foreground: oklch(0.97 0.01 22);
+
+  --chart-1: oklch(0.85 0.003 256);
+  --chart-2: oklch(0.77 0.15 163);
+  --chart-3: oklch(0.88 0.14 86);
+  --chart-4: oklch(0.74 0.19 22);
+  --chart-5: oklch(0.55 0.005 256);
+
+  --glow-primary: 0 0 0 rgb(0 0 0 / 0);
+  --glow-safe: 0 0 0 rgb(0 0 0 / 0);
+  --glow-phishing: 0 0 0 rgb(0 0 0 / 0);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.3),
+    0 1px 3px oklch(0 0 0 / 0.22);
+}
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular",
+    monospace;
+  /* Display face: hero headline and big numbers only */
+  --font-display: var(--font-space-grotesk), var(--font-geist-sans),
+    ui-sans-serif, system-ui, sans-serif;
+
+  /* Colors mapped from tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-safe: var(--safe);
+  --color-safe-foreground: var(--safe-foreground);
+  --color-suspicious: var(--suspicious);
+  --color-suspicious-fill: var(--suspicious-fill);
+  --color-suspicious-foreground: var(--suspicious-foreground);
+  --color-phishing: var(--phishing);
+  --color-phishing-foreground: var(--phishing-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Radius scale (from --radius) */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* Shadows / glows as utilities: shadow-card, shadow-glow-primary, … */
+  --shadow-card: var(--shadow-card);
+  --shadow-glow-primary: var(--glow-primary);
+  --shadow-glow-safe: var(--glow-safe);
+  --shadow-glow-phishing: var(--glow-phishing);
+
+  /* Extra spacing tokens: py-section, gap-stack, … */
+  --spacing-section: 5rem;
+  --spacing-stack: 1.5rem;
+}
+
+@layer base {
+  /* Visible focus everywhere (Phase 11): a safety net under the
+     per-component focus styles, so no interactive element can end
+     up focusable-but-invisible for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary/25;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Card surface (the class name predates the redesign): solid
+     card background, hairline border, very soft shadow — no blur */
+  .glass-card {
+    @apply rounded-lg border border-border bg-card shadow-card;
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease;
+  }
+}
