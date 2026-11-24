@@ -245,6 +245,23 @@ This model is the primary model used by the command-line URL prediction script.
 ```text
 phishing-url-detection/
 │
+├── backend/                       # Production FastAPI Backend
+│   ├── app/
+│   │   ├── api/routes.py          # /api/scan, /api/history, /api/health
+│   │   ├── core/                  # Database, rate limiting, security
+│   │   ├── ml/                    # Inference & explainability engine
+│   │   └── schemas/               # Pydantic contract schemas
+│   ├── data/                      # SQLite scan history storage
+│   ├── tests/                     # Integration & ML test suites
+│   ├── requirements.txt           # Backend dependencies
+│   ├── run.py                     # Backend launcher
+│   └── README.md
+│
+├── frontend/                      # Next.js (App Router) + TypeScript UI
+│   ├── src/                       # Components, hooks, types
+│   ├── .env.local                 # Configured to connect to backend
+│   └── package.json
+│
 ├── dataset/
 │   ├── dataset_phishing.csv
 │   └── cleaned_dataset.csv
@@ -274,6 +291,7 @@ phishing-url-detection/
 ├── .gitignore
 ├── requirements.txt
 ├── README.md
+├── start_backend.bat
 └── app.py
 ```
 
@@ -324,7 +342,29 @@ pip install -r requirements.txt
 
 ## How to Run
 
-### Run the URL-Only Prediction System
+### 1. Run the Backend Server (FastAPI)
+
+```bash
+cd backend
+pip install -r requirements.txt
+python run.py
+```
+Or simply double-click `start_backend.bat`.
+
+- API Server: `http://localhost:8000`
+- Interactive Swagger UI: `http://localhost:8000/docs`
+
+### 2. Run the Frontend (Next.js)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the real-time LinkLens phishing URL detection dashboard connected to your backend.
+
+### 3. Run the Command-Line Prediction Tool
 
 After activating the virtual environment and installing dependencies, execute:
 

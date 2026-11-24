@@ -1,18 +1,35 @@
 # Python virtual environment
 .venv/
 venv/
+env/
 __pycache__/
 *.py[cod]
+
+# Node / Frontend
+node_modules/
+.next/
+out/
+build/
+.vercel/
+
+# Database files (SQLite databases created at runtime)
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/*.sqlite*
+*.db
 
 # Environment variables and secrets
 .env
 .env.*
+!.env.example
+*.local
 
 # IDE and operating system
 .vscode/
+.idea/
 .DS_Store
 Thumbs.db
 
-# Temporary files
+# Temporary files & caches
 *.log
 .pytest_cache/
